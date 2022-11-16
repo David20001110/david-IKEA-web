@@ -1,0 +1,253 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+    box-sizing: border-box;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial , "PingFang TC", "Noto Sans TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* eric reset/css end */
+img{
+    display: block;
+    width: 100%;
+}
+/* 頭檔區 */
+#topbar{
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;  /* 只要兒子沒有另外設孫子就一樣可以置中 */
+    height: 80px;
+    padding: 10px; /* padding才會包含背景顏色 */
+    background-color: rgba(255, 255, 255, 0.7);
+}
+#topbar h1{
+    display: flex;
+    flex: 1;
+}
+#topbar h1 img{
+    max-height: 80px;
+}
+#topbar .menu{
+    flex: 4;
+}
+#serach_form{
+    /* display: flex;
+    align-items: center; */ /* 為了置中 */
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+#search{
+    width: 100%;
+    height: 30px;
+}
+#search_btn{
+    position: absolute; /* 要去找爸爸relative就可以找定位 */
+    top: 25px;
+    right: 25px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer; /* 屬標樣式有手 */
+    width: 20px;
+    height: 20px;
+    background-image: url(../images/h-icon-1.svg);
+    background-repeat: none; /* 如果圖形不是正方形就需要none repeat */
+    background-size: 100%; /* 如果不是svg就有需要用到這個 */
+}
+#topbar .icon{
+    flex: 1;
+}
+#topbar ul{
+    display: flex;
+}
+#topbar .menu li{
+    flex: 1;
+    position: relative; /* 因為他的兒子要設定position */
+}
+#topbar .menu a{
+    display: block;
+    height: 40px;
+    /* margin-top: 20px; */
+    text-align: center;
+    line-height: 40px; /* 這兩行是讓文字在正中間 */
+    color: rgb(142, 136, 136);
+    text-decoration: none;
+    border-left: 1px solid #666;
+}
+#topbar .menu li:first-child a{
+    border-left: none; /* 因為裡面div的a需要border-bottom因此改成border-left */
+}
+#topbar .menu div{
+    display: none;
+    position: absolute; /* position原設會與孩子一樣寬 */
+    width: 100%; /* 所以要設定回去寬度100%讓他跟爸爸一樣寬 */
+    left: 0;
+    top: 60px;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 999;
+}
+#topbar .menu div a{
+    border-left: none;
+    border-bottom: dotted 1px #666;
+}
+#topbar .menu div a:last-child{
+    border-bottom: none; /* 下拉式表單最後一個不要底線 */
+}
+#topbar .icon li{
+    flex: 1;
+    padding: 10px;
+}
+/* 換圖輪播 */
+.carousel-inner,.carousel-item{
+    height: calc(100vh - 80px);
+    z-index: -1; /* 可加可不加 假如下拉式選單有寫這裡就不用寫了 */
+    
+}
+.carousel-caption{
+    bottom: 10%;
+}
+.carousel-caption h5{
+    font-size: 5rem;
+}
+.carousel-caption p{
+    font-size: 1.5rem;
+}
+.carousel-inner img{
+    height: 100%;
+    object-fit: cover; /* 讓照片強制置中 */
+}
+/* 美食列表 */
+#foods{
+    display: flex;
+    margin: 80px 2%;
+}
+#foods>div{
+    flex: 1; /* section下的第一層div會一人一半 */
+    height: 450px;
+}
+.food_pt{
+    position: relative;
+    margin-right: 50px;
+    background-image: url(../images/bg_s.jpg);
+    background-size: 100% 100%;
+    
+}
+.food_1{
+    position: absolute;
+    animation-duration: 3s;
+    /* animation-iteration-count: infinite; */
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    top: 70px; /* 因為爸爸高度是px */
+    left: -500px; /* 因為爸爸寬度是flex1 */
+}
+@keyframes food_1{
+    from{
+        top: 70px;
+        left: -500px;
+        transform: rotate(0deg);
+    }
+    to{
+        top: 70px;
+        left: 45%;
+        transform: rotate(360deg);
+    }
+}
+.food_2{
+    position: absolute;
+    animation-duration: 3s;
+    /* animation-iteration-count: infinite; */
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    top: 40px;
+    left: -500px;
+}
+@keyframes food_2{
+    from{
+        top: 40px;
+        left: -500px;
+    }
+    to{
+        top: 40px;
+        left: 5%;
+    }
+}
+.food_content{
+    padding: 120px 50px 0;
+}
+.food_content h1{
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+.food_content p{
+    line-height: 1.5rem;
+    margin: 20px 0;
+}
+/* 產品列表 */
+.title h2{
+    font-size: 2.4rem;
+    color: blue;
+    font-weight: bold;
+}
+.title span{
+    padding-left: 10px;
+    font-size: large;
+    color: #666;
+    font-weight: 400;
+}.title::after{
+    content: "";
+    display: block; /* 因為原本是行內元素要改成block */
+    height: 5px;
+    background-color: blue;
+    margin-top: 15px;
+    margin-left: 2.7rem;
+}
+#product figure{
+    padding: 50px 20px;
+}
